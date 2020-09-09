@@ -1,2 +1,236 @@
-/*font-family: Roboto, Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+/*
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+:root {
+	--blue: #393c83;
+	--white: #fff;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-bold: 700;
+}
+
+html {
+	font-size: 10px;
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.4rem;
+	margin: 0 auto;
+	background-color: var(--white);
+}
+
+h1,
+h2 {
+	text-align: center;
+}
+
+input,
+button {
+	border: none;
+	outline: none;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 60rem;
+	padding: 1.6rem;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-column {
+	flex-direction: column;
+}
+
+.flex-justify-between {
+	justify-content: space-between;
+}
+
+.header {
+	border-radius: 0px 0px 25px 25px;
+	padding-bottom: 7rem;
+	padding-top: 5rem;
+	background-color: var(--blue);
+}
+
+.search__bar {
+	position: relative;
+}
+
+.search__input {
+	padding: 0.9rem;
+	border-radius: 1.9rem;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	width: 100%;
+
+	position: relative;
+}
+
+.search__button {
+	border-radius: 50%;
+	padding: 1.15rem 1.45rem;
+	background-color: var(--blue);
+
+	position: absolute;
+	width: 2.9rem;
+	height: 2.3rem;
+	right: 0.6rem;
+	top: 0.5rem;
+	transition: 0.3s transform;
+}
+
+.search__button svg {
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(50%, -50%);
+}
+
+.search__button:hover {
+	transform: scale(1.1);
+}
+
+.search__button:hover svg {
+	transform: scale(1.1) translate(50%, -50%);
+}
+
+.main-forecast__container {
+	background-color: var(--white);
+	border-radius: 1.8rem;
+	padding: 2rem 0.9rem;
+	max-width: 40rem;
+	margin: 0 auto;
+	margin-top: -5rem;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.main-forecast__location p,
+.main-forecast__status p {
+	color: var(--blue);
+	font-size: 1.7rem;
+	font-weight: var(--font-weight-regular);
+}
+
+.main-forecast__location p {
+	font-weight: var(--font-weight-bold);
+}
+
+.main-forecast__details {
+	display: grid;
+	grid-template-columns: auto 3rem;
+	align-items: center;
+	place-content: space-evenly;
+}
+
+.main-forecast__temperature {
+	font-weight: var(--font-weight-bold);
+	font-size: 4rem;
+	color: var(--blue);
+	text-align: center;
+}
+
+.main-forecast__units {
+	font-size: 2.5rem;
+	display: flex;
+	justify-content: center;
+	font-weight: var(--font-weight-regular);
+	color: var(--blue);
+}
+
+.main-forecast__units sup {
+	font-weight: var(--font-weight-bold);
+	font-size: 1.2rem;
+}
+
+.forecast-section__heading {
+	color: var(--blue);
+	font-size: 1.7rem;
+	margin: 2rem 0;
+}
+
+.hourly-forecast__container {
+	display: flex;
+	overflow-x: scroll;
+	padding: 2rem 0;
+}
+
+.hourly-forecast__card {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	border-radius: 1rem;
+	box-shadow: 3px 3px 10px -1px rgba(0, 0, 0, 0.25);
+	padding: 1rem 0.2rem;
+	margin-right: 0.5rem;
+}
+
+.hourly-forecast-temp__container {
+	display: flex;
+}
+
+.hourly-forecast__temperature {
+	font-size: 1.2rem;
+	font-weight: var(--font-weight-bold);
+	color: var(--blue);
+}
+
+.hourly-forecast__units {
+	font-size: 1rem;
+	margin-left: 0.4rem;
+}
+
+.hourly-forecast__units sup {
+	font-size: 0.8rem;
+}
+
+.hourly-forecast__time {
+	font-weight: var(--font-weight-medium);
+	color: var(--blue);
+}
+
+.daily-forecast__card {
+	display: grid;
+	grid-template-columns: 4rem 6rem 8rem 11rem;
+	align-items: center;
+	border-radius: 2px;
+	padding: 0.2rem;
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+	margin-bottom: 0.8rem;
+}
+
+.daily-forecast__day {
+	font-weight: var(--font-weight-medium);
+	font-size: 1.4rem;
+	color: var(--blue);
+}
+
+.daily-forecast__description {
+	font-size: 1.4rem;
+	font-weight: var(--font-weight-regular);
+	color: var(--blue);
+}
+
+.daily-forecast__temperature {
+	font-size: 1.4rem;
+	font-weight: var(--font-weight-medium);
+	color: var(--blue);
+}

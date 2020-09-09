@@ -8,11 +8,11 @@
 	</head>
 	<body>
 		<header class="container header">
-			<form action="submit" class="search__bar">
+			<form action="submit" class="search__bar" id="search-form">
 				<input
 					type="text"
-					name="search"
-					id="search"
+					name="search-input"
+					id="search-input"
 					class="search__input"
 					placeholder="Search for a city..."
 					required
@@ -45,27 +45,27 @@
 						class="main-forecast__conditions flex-center flex-column flex-justify-between"
 					>
 						<div class="main-forecast__location">
-							<p class="weather__location" id="weather__location">
+							<p class="weather__location" id="weather-location">
 								Lusaka, Zambia
 							</p>
 						</div>
 						<div class="main-forecast__image-container">
 							<img
-								id="main-forecast__weather-image"
+								id="weather-icon"
 								src="http://openweathermap.org/img/wn/11d.png"
 								alt=""
 								srcset=""
 							/>
 						</div>
 						<div class="main-forecast__status">
-							<p id="main-forecast__description">rainy</p>
+							<p id="main-forecast-status">rainy</p>
 						</div>
 					</div>
 
 					<div class="main-forecast__details">
 						<p
 							class="main-forecast__temperature"
-							id="main-forecast__temperature"
+							id="main-forecast-temperature"
 						>
 							15.4
 						</p>
@@ -112,5 +112,7 @@
 				</div>
 			</section>
 		</main>
+
+		<script src="./index.js"></script>
 	</body>
 </html>
