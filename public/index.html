@@ -4,9 +4,89 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Smashit weather</title>
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
-		<h1>Project setup successful!</h1>
+		<header class="container header">
+			<form action="submit" class="search__bar">
+				<input
+					type="text"
+					name="search"
+					id="search"
+					class="search__input"
+					placeholder="Search for a city..."
+					required
+				/>
+				<button
+					type="submit"
+					class="search__button"
+					aria-label="Search for location data"
+				>
+					<svg
+						width="14"
+						height="12"
+						viewBox="0 0 14 12"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						focusable="false"
+					>
+						<path
+							d="M13.0618 10.2738L10.0168 7.74343C10.7997 6.99982 11.2287 6.06419 11.2287 5.09017C11.2287 2.81446 8.91136 0.962952 6.06308 0.962952C3.2148 0.962952 0.897461 2.81446 0.897461 5.09017C0.897461 7.36588 3.2148 9.21739 6.06308 9.21739C7.13236 9.21739 8.15134 8.95971 9.02253 8.47054L12.0907 11.0201C12.2189 11.1265 12.3914 11.1852 12.5763 11.1852C12.7512 11.1852 12.9172 11.1319 13.0432 11.035C13.3109 10.8292 13.3194 10.4879 13.0618 10.2738ZM6.06308 2.03962C8.16841 2.03962 9.88115 3.40806 9.88115 5.09017C9.88115 6.77228 8.16841 8.14072 6.06308 8.14072C3.95775 8.14072 2.24501 6.77228 2.24501 5.09017C2.24501 3.40806 3.95775 2.03962 6.06308 2.03962Z"
+							fill="#E5E5E5"
+						/>
+					</svg>
+				</button>
+			</form>
+		</header>
+		<main class="container">
+			<section>
+				<div class="main-forecast__container">
+					<div
+						class="main-forecast__conditions flex-center flex-column flex-justify-between"
+					>
+						<div class="main-forecast__location">
+							<p class="weather__location">Lusaka, Zambia</p>
+						</div>
+						<div class="main-forecast__image-container">
+							<img
+								src="http://openweathermap.org/img/wn/11d.png"
+								alt=""
+								srcset=""
+							/>
+						</div>
+						<div class="main-forecast__status">
+							<p>rainy</p>
+						</div>
+					</div>
+
+					<div class="main-forecast__details">
+						<p class="main-forecast__temperature">15.4</p>
+						<span class="main-forecast__units"><sup>o</sup> C </span>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h2 class="forecast-section__heading">Hourly forecast</h2>
+				<div class="daily-forecast__container">
+					<div class="daily-forecast__card">
+						<div class="daily-forecast-temp__container">
+							<p class="daily-forecast__temperature">15.42</p>
+							<span class="daily-forecast__units"><sup>o</sup> C </span>
+						</div>
+						<div class="daily-forecast-image__container">
+							<img
+								src="http://openweathermap.org/img/wn/11d.png"
+								alt=""
+								srcset=""
+							/>
+						</div>
+						<div class="daily-forecast-time__container">
+							<p class="daily-forecast__time">Now</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
 	</body>
 </html>
