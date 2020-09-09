@@ -45,22 +45,30 @@
 						class="main-forecast__conditions flex-center flex-column flex-justify-between"
 					>
 						<div class="main-forecast__location">
-							<p class="weather__location">Lusaka, Zambia</p>
+							<p class="weather__location" id="weather__location">
+								Lusaka, Zambia
+							</p>
 						</div>
 						<div class="main-forecast__image-container">
 							<img
+								id="main-forecast__weather-image"
 								src="http://openweathermap.org/img/wn/11d.png"
 								alt=""
 								srcset=""
 							/>
 						</div>
 						<div class="main-forecast__status">
-							<p>rainy</p>
+							<p id="main-forecast__description">rainy</p>
 						</div>
 					</div>
 
 					<div class="main-forecast__details">
-						<p class="main-forecast__temperature">15.4</p>
+						<p
+							class="main-forecast__temperature"
+							id="main-forecast__temperature"
+						>
+							15.4
+						</p>
 						<span class="main-forecast__units"><sup>o</sup> C </span>
 					</div>
 				</div>
@@ -68,22 +76,38 @@
 
 			<section>
 				<h2 class="forecast-section__heading">Hourly forecast</h2>
-				<div class="daily-forecast__container">
-					<div class="daily-forecast__card">
-						<div class="daily-forecast-temp__container">
-							<p class="daily-forecast__temperature">15.42</p>
-							<span class="daily-forecast__units"><sup>o</sup> C </span>
+				<div class="hourly-forecast__container">
+					<div class="hourly-forecast__card">
+						<div class="hourly-forecast-temp__container">
+							<p class="hourly-forecast__temperature">15.42</p>
+							<span class="hourly-forecast__units"><sup>o</sup> C </span>
 						</div>
-						<div class="daily-forecast-image__container">
+						<div class="hourly-forecast-image__container">
 							<img
 								src="http://openweathermap.org/img/wn/11d.png"
 								alt=""
 								srcset=""
 							/>
 						</div>
-						<div class="daily-forecast-time__container">
-							<p class="daily-forecast__time">Now</p>
+						<div class="hourly-forecast-time__container">
+							<p class="hourly-forecast__time">Now</p>
 						</div>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h2 class="forecast-section__heading">Daily forecast</h2>
+				<div class="daily-forecast__container">
+					<div class="daily-forecast__card">
+						<p class="daily-forecast__day">Tue</p>
+						<img
+							src="http://openweathermap.org/img/wn/04n.png"
+							alt=""
+							class="daily-forecast__icon"
+						/>
+						<p class="daily-forecast__description">Clear sky</p>
+						<p class="daily-forecast__temperature">12.54 / 27.92</p>
 					</div>
 				</div>
 			</section>
