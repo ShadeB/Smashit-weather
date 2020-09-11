@@ -17,7 +17,7 @@ const displayMainForecast = (location, icon, status, temperature) => {
 	tempDisplay.textContent = temperature;
 };
 
-const displayHourlyForecast = (temperature, icon, imgAltText) => {
+const displayHourlyForecast = (time, temperature, icon, imgAltText) => {
 	const forecastContainer = document.querySelector(
 		'#hourly-forecast-container'
 	);
@@ -52,7 +52,7 @@ const displayDailyForecast = (minTemp, maxTemp, icon, status, description) => {
 
 	const imgAltText = `${description}`;
 	const temperature = `${minTemp} / ${maxTemp}`;
-
+	let day = 'Tuesday';
 	const imgUrl = `http://openweathermap.org/img/wn/${icon}.png`;
 
 	const dailyForecastCard = `
@@ -88,7 +88,17 @@ const getMoreData = ({ lon, lat }) => {
 					let icon = data.hourly[key].weather[0].icon;
 					let imgAltText = data.hourly[key].weather[0].description;
 					let temperature = data.hourly[key].temp;
-					displayHourlyForecast(temperature, icon, imgAltText);
+
+					let timestamp = data.hourly[key].dt;
+					let currentDate = new Date(timestamp * 1000);
+					let hours = currentDate.getHours();
+					let minutes = currentDate.getMinutes();
+					let seconds = currentDate.getSeconds();
+					let fullTime = `${hours}:${minutes}${seconds}`;
+					let time;
+					time = key == 0 ? 'now' : `${fullTime}`;
+
+					displayHourlyForecast(time, temperature, icon, imgAltText);
 				}
 
 				for (const key in data.daily) {
