@@ -23,7 +23,6 @@ const displayHourlyForecast = (temperature, icon, imgAltText) => {
 	);
 
 	const imageUrl = `http://openweathermap.org/img/wn/${icon}.png`;
-	const forecastTime = 'Now';
 
 	const temperatureDiv = `<div class = 'hourly-forecast-temp__container'>
       <p class = 'hourly-forecast__temperature'>${temperature}</p>
@@ -35,7 +34,7 @@ const displayHourlyForecast = (temperature, icon, imgAltText) => {
     </div>`;
 
 	const forecastTimeDiv = `<div class = 'hourly-forecast-time__container'>
-      <p class = 'hourly-forecast__time'>${forecastTime}</p>
+      <p class = 'hourly-forecast__time'>${time}</p>
     </div>`;
 
 	const hourlyForecastCard = `
@@ -51,7 +50,6 @@ const displayHourlyForecast = (temperature, icon, imgAltText) => {
 const displayDailyForecast = (minTemp, maxTemp, icon, status, description) => {
 	const forecastContainer = document.querySelector('#daily-forecast-container');
 
-	const day = 'today';
 	const imgAltText = `${description}`;
 	const temperature = `${minTemp} / ${maxTemp}`;
 
@@ -69,6 +67,12 @@ const displayDailyForecast = (minTemp, maxTemp, icon, status, description) => {
 };
 
 const getMoreData = ({ lon, lat }) => {
+	const hourlyForecastContainer = document.querySelector(
+		'#hourly-forecast-container'
+	);
+	const dailyForecastContainer = document.querySelector(
+		'#daily-forecast-container'
+	);
 	const exclude = 'current,minutely';
 	const units = 'metric';
 	const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&
@@ -78,6 +82,8 @@ const getMoreData = ({ lon, lat }) => {
 		.then((response) => response.json())
 		.then((data) => {
 			if (data) {
+				hourlyForecastContainer.innerHTML = '';
+				dailyForecastContainer.innerHTML = '';
 				for (const key in data.hourly) {
 					let icon = data.hourly[key].weather[0].icon;
 					let imgAltText = data.hourly[key].weather[0].description;
@@ -91,6 +97,7 @@ const getMoreData = ({ lon, lat }) => {
 					let icon = data.daily[key].weather[0].icon;
 					let status = data.daily[key].weather[0].main;
 					let description = data.daily[key].weather[0].description;
+
 					displayDailyForecast(minTemp, maxTemp, icon, status, description);
 				}
 			}
@@ -98,13 +105,25 @@ const getMoreData = ({ lon, lat }) => {
 		.catch((err) => console.log(err));
 };
 
-const citySearch = (e) => {
-	e.preventDefault();
-	const searchQuery = searchInput.value;
+const getFromLocalStorage = (searchQuery) => {
+	return localStorage.getItem(searchQuery)
+		? JSON.parse(localStorage.getItem(searchQuery))
+		: [];
+};
+
+const AddToLocalStorage = (searchQuery, data) => {
+	localStorage.setItem(searchQuery, JSON.stringify(data));
+};
+
+const fetchWeather = (searchQuery) => {
 	const units = 'metric';
-
 	const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchQuery}&units=${units}&appid=${apiKey}`;
-
+	const hourlyForecastContainer = document.querySelector(
+		'#hourly-forecast-container'
+	);
+	const dailyForecastContainer = document.querySelector(
+		'#daily-forecast-container'
+	);
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
@@ -118,9 +137,30 @@ const citySearch = (e) => {
 
 				displayMainForecast(location, icon, status, temperature);
 				getMoreData(coord);
+				AddToLocalStorage(searchQuery, data);
 			}
 		})
 		.catch((err) => console.log(err));
+};
+
+const citySearch = (e) => {
+	e.preventDefault();
+	const searchQuery = searchInput.value;
+	const data = getFromLocalStorage(searchQuery);
+
+	if (data.length === 0) {
+		fetchWeather(searchQuery);
+	} else {
+		const { coord, main, name, sys, weather } = data;
+		const country = sys.country;
+		const location = `${name}, ${country}`;
+		const temperature = main.temp;
+		const status = weather[0].main;
+		const icon = weather[0].icon;
+
+		displayMainForecast(location, icon, status, temperature);
+		getMoreData(coord);
+	}
 };
 
 searchForm.addEventListener('submit', citySearch);
