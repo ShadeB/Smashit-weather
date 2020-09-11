@@ -158,12 +158,7 @@ const AddToLocalStorage = (searchQuery, data) => {
 const fetchWeather = (searchQuery) => {
 	const units = 'metric';
 	const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchQuery}&units=${units}&appid=${apiKey}`;
-	const hourlyForecastContainer = document.querySelector(
-		'#hourly-forecast-container'
-	);
-	const dailyForecastContainer = document.querySelector(
-		'#daily-forecast-container'
-	);
+
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
