@@ -203,3 +203,4 @@ const searchFormSubmit = (e) => {
 };
 
 searchForm.addEventListener('submit', searchFormSubmit);
+window.addEventListener('onload', getData('New York'));
