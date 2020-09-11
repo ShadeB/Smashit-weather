@@ -9,7 +9,7 @@ const displayMainForecast = (location, icon, status, temperature) => {
 	const weatherStatus = document.querySelector('#main-forecast-status');
 	const tempDisplay = document.querySelector('#main-forecast-temperature');
 
-	const iconLink = `http://openweathermap.org/img/wn/${icon}.png`;
+	const iconLink = `https://openweathermap.org/img/wn/${icon}.png`;
 
 	weatherLocation.textContent = location;
 	weatherIcon.src = `${iconLink}`;
@@ -22,7 +22,7 @@ const displayHourlyForecast = (time, temperature, icon, imgAltText) => {
 		'#hourly-forecast-container'
 	);
 
-	const imageUrl = `http://openweathermap.org/img/wn/${icon}.png`;
+	const imageUrl = `https://openweathermap.org/img/wn/${icon}.png`;
 
 	const temperatureDiv = `<div class = 'hourly-forecast-temp__container'>
       <p class = 'hourly-forecast__temperature'>${temperature}</p>
@@ -59,7 +59,7 @@ const displayDailyForecast = (
 
 	const imgAltText = `${description}`;
 	const temperature = `${minTemp} / ${maxTemp}`;
-	const imgUrl = `http://openweathermap.org/img/wn/${icon}.png`;
+	const imgUrl = `https://openweathermap.org/img/wn/${icon}.png`;
 
 	const dailyForecastCard = `
   <div class = 'daily-forecast__card'>
