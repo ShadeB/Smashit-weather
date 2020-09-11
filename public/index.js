@@ -178,9 +178,7 @@ const fetchWeather = (searchQuery) => {
 		.catch((err) => console.log(err));
 };
 
-const citySearch = (e) => {
-	e.preventDefault();
-	const searchQuery = searchInput.value;
+const getData = (searchQuery) => {
 	const data = getFromLocalStorage(searchQuery);
 
 	if (data.length === 0) {
@@ -198,4 +196,10 @@ const citySearch = (e) => {
 	}
 };
 
-searchForm.addEventListener('submit', citySearch);
+const searchFormSubmit = (e) => {
+	const searchQuery = searchInput.value;
+	e.preventDefault();
+	getData(searchQuery);
+};
+
+searchForm.addEventListener('submit', searchFormSubmit);
