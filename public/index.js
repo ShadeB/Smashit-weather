@@ -47,12 +47,18 @@ const displayHourlyForecast = (time, temperature, icon, imgAltText) => {
 	forecastContainer.insertAdjacentHTML('beforeend', `${hourlyForecastCard}`);
 };
 
-const displayDailyForecast = (minTemp, maxTemp, icon, status, description) => {
+const displayDailyForecast = (
+	day,
+	minTemp,
+	maxTemp,
+	icon,
+	status,
+	description
+) => {
 	const forecastContainer = document.querySelector('#daily-forecast-container');
 
 	const imgAltText = `${description}`;
 	const temperature = `${minTemp} / ${maxTemp}`;
-	let day = 'Tuesday';
 	const imgUrl = `http://openweathermap.org/img/wn/${icon}.png`;
 
 	const dailyForecastCard = `
@@ -84,6 +90,16 @@ const getMoreData = ({ lon, lat }) => {
 			if (data) {
 				hourlyForecastContainer.innerHTML = '';
 				dailyForecastContainer.innerHTML = '';
+
+				let daysArray = [
+					'Sunday',
+					'Monday',
+					'Tuesday',
+					'Wednesday',
+					'Thursday',
+					'Friday',
+					'Saturday'
+				];
 				for (const key in data.hourly) {
 					let icon = data.hourly[key].weather[0].icon;
 					let imgAltText = data.hourly[key].weather[0].description;
@@ -108,7 +124,21 @@ const getMoreData = ({ lon, lat }) => {
 					let status = data.daily[key].weather[0].main;
 					let description = data.daily[key].weather[0].description;
 
-					displayDailyForecast(minTemp, maxTemp, icon, status, description);
+					let timestamp = data.daily[key].dt;
+					let currentDate = new Date(timestamp * 1000);
+					let dayOfWeek = daysArray[currentDate.getDay()];
+					let day;
+					let getDayOfWeek = dayOfWeek.substring(0, 3);
+					day = key == 0 ? 'Today' : `${getDayOfWeek}`;
+
+					displayDailyForecast(
+						day,
+						minTemp,
+						maxTemp,
+						icon,
+						status,
+						description
+					);
 				}
 			}
 		})
