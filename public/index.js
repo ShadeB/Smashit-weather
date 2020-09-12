@@ -204,3 +204,16 @@ const searchFormSubmit = (e) => {
 
 searchForm.addEventListener('submit', searchFormSubmit);
 window.addEventListener('onload', getData('New York'));
+
+if ('serviceWorker' in navigator) {
+	window.addEventListener('load', () => {
+		navigator.serviceWorker
+			.register('service-worker.js')
+			.then((register) => {
+				console.log('Service worker registration successful');
+			})
+			.catch((err) => {
+				console.log('Service worker registration failed', err);
+			});
+	});
+}
