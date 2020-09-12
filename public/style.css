@@ -239,3 +239,62 @@ button {
 	font-weight: var(--font-weight-medium);
 	color: var(--blue);
 }
+
+@media (min-width: 768px) {
+	.main-forecast__container {
+		padding: 4rem 0;
+	}
+
+	.search__input {
+		padding: 1.5rem;
+		border-radius: 1.6rem;
+	}
+
+	.search__button {
+		padding: 2rem;
+		top: 0.2rem;
+	}
+
+	.main-forecast__location p,
+	.main-forecast__status p {
+		font-size: 2.2rem;
+	}
+
+	.main-forecast__temperature {
+		font-size: 5rem;
+	}
+
+	.forecast-section__heading {
+		font-size: 2.5rem;
+		margin-top: 4rem;
+	}
+
+	.hourly-forecast__card {
+		padding: 2rem;
+		min-width: 10rem;
+	}
+
+	.hourly-forecast__temperature {
+		font-size: 2rem;
+	}
+
+	.hourly-forecast__units {
+		font-size: 1.8rem;
+		display: flex;
+		align-items: flex-end;
+	}
+
+	.hourly-forecast__units sup {
+		font-size: 1rem;
+		font-weight: var(--font-weight-medium);
+		align-self: flex-start;
+	}
+
+	.hourly-forecast__time {
+		font-size: 1.7rem;
+	}
+
+	.daily-forecast__card p {
+		font-size: 1.8rem;
+	}
+}
