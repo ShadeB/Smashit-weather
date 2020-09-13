@@ -197,6 +197,7 @@ button {
 .hourly-forecast__units {
 	font-size: 1rem;
 	margin-left: 0.4rem;
+	color: var(--blue);
 }
 
 .hourly-forecast__units sup {
