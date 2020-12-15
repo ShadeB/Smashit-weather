@@ -203,7 +203,7 @@ const searchFormSubmit = (e) => {
 };
 
 searchForm.addEventListener('submit', searchFormSubmit);
-window.addEventListener('onload', getData('New York'));
+window.addEventListener('onload', getData('Lusaka,ZM'));
 
 if ('serviceWorker' in navigator) {
 	window.addEventListener('load', () => {
