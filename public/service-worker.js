@@ -1,6 +1,6 @@
 const filesToCache = ['./', '404.html', 'index.html', 'index.js', 'style.css'];
 
-const staticCacheName = 'cached-pages-v1';
+const staticCacheName = 'cached-pages-v2';
 
 self.addEventListener('install', (e) => {
 	//begin installing service worker and cache assets
